@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Question Game</title>
+  </head>
+  <body>
+
+    <h1>Question Game!</h1>
+
+    <p id="score"></p>
+    <p id="question"></p>
+    <p id="keyPressed"></p>
+    <p id="word"></p>
+    <p id="guess"></p>    
+    <p id="display"></p>
+    <p id="missed"></p>    
+    <script>
+
+      var word = "madonna";
+      var guessWord = "";
+      var tempGuessWord ="";
+      var userInput;
+
+      // FUNCTIONS
+      // ==============================================================================
+
+
+      function init(word) {
+        for(var i=0; i < word.length; i++) {
+          guessWord += "_";
+        }
+        console.log(guessWord);
+      }
+
+      init(word);
+
+      document.onkeyup = function(event) {
+        userInput = String.fromCharCode(event.keyCode).toLowerCase();
+  //      console.log(userInput);
+
+        for(var i=0; i < word.length; i++) {
+          if (word.charAt(i) === userInput) {
+            tempGuessWord += userInput;
+            alert("\nguess1: " + tempGuessWord);
+          }
+          else if (guessWord.charAt(i) != "_") {
+            tempGuessWord += guessWord.charAt(i);
+            alert("\nguess2: " + tempGuessWord);
+          } 
+          else {
+            tempGuessWord += "_";
+           alert("\nguess3: " + tempGuessWord);
+          }
+        }
+        guessWord = tempGuessWord;
+      };
+
+    </script>
+    
+  </body>
+</html>
